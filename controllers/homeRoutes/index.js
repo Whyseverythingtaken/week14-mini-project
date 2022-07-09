@@ -16,4 +16,12 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/create-project', (req, res) => {
+  if (req.session.logged_in) {
+    res.render('createProject');
+  } else {
+    res.redirect('/login');
+  }
+});
+
 module.exports = router;
