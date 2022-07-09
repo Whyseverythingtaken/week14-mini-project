@@ -16,9 +16,17 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/create-project', (req, res) => {
+router.get('/profile', async (req, res) => {
   if (req.session.logged_in) {
-    res.render('createProject');
+    const projects = await Projects.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+      raw: true
+    });
+
+    // console.log('User projects', projects);
+    res.render('profile', {projects});
   } else {
     res.redirect('/login');
   }

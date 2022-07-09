@@ -1,0 +1,13 @@
+<h2>Here is a list of all of your projects.</h2>
+{{#each projects as |project|}}
+  <div class="project-container">
+    <p>{{project.id}}</p>
+    <p>{{project.name}}</p>
+    <p>{{project.description}}</p>
+  </div>
+{{/each}}
+
+<div>
+  <h3>Create a new project</h3>
+  {{>create-project}}
+</div>
